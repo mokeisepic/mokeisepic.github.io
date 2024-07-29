@@ -1,4 +1,142 @@
+<html><head><base href="https://gamehosting.example.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameVault - Indie Game Download Platform</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  .game-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .game-card:hover {
+    transform: translateY(-5px);
+  }
+  .game-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  .game-info {
+    padding: 1rem;
+  }
+  .game-title {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+  }
+  .game-developer {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .download-btn {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+</style>
+</head>
 <body>
-  <h1>Skibidi</h1>
-  <h2>By<br>June 12, 2012</h2>
+  <header class="header">
+    <h1>GameVault</h1>
+    <p>Discover and Download Indie Games</p>
+  </header>
+  
+  <div class="container">
+    <div class="game-grid">
+      <div class="game-card">
+        <img src="https://placeimg.com/300/150/tech" alt="Pixel art platformer game screenshot" class="game-image" width="300" height="150">
+        <div class="game-info">
+          <h2 class="game-title">Pixel Platformer</h2>
+          <p class="game-developer">By: Indie Dev Studios</p>
+          <a href="https://gamehosting.example.com/download?game=pixel-platformer" class="download-btn">Download</a>
+        </div>
+      </div>
+      
+      <div class="game-card">
+        <img src="https://placeimg.com/300/150/nature" alt="3D exploration game screenshot" class="game-image" width="300" height="150">
+        <div class="game-info">
+          <h2 class="game-title">Nature Explorer</h2>
+          <p class="game-developer">By: Green Games</p>
+          <a href="https://gamehosting.example.com/download?game=nature-explorer" class="download-btn">Download</a>
+        </div>
+      </div>
+      
+      <div class="game-card">
+        <img src="https://placeimg.com/300/150/arch" alt="Puzzle game screenshot" class="game-image" width="300" height="150">
+        <div class="game-info">
+          <h2 class="game-title">Mind Bender</h2>
+          <p class="game-developer">By: Puzzle Masters</p>
+          <a href="https://gamehosting.example.com/download?game=mind-bender" class="download-btn">Download</a>
+        </div>
+      </div>
+      
+      <div class="game-card">
+        <img src="https://placeimg.com/300/150/people" alt="RPG game screenshot" class="game-image" width="300" height="150">
+        <div class="game-info">
+          <h2 class="game-title">Epic Quest</h2>
+          <p class="game-developer">By: Fantasy Forge</p>
+          <a href="https://gamehosting.example.com/download?game=epic-quest" class="download-btn">Download</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple game search functionality
+    function searchGames() {
+      const searchTerm = document.getElementById('search-input').value.toLowerCase();
+      const gameCards = document.querySelectorAll('.game-card');
+      
+      gameCards.forEach(card => {
+        const title = card.querySelector('.game-title').textContent.toLowerCase();
+        const developer = card.querySelector('.game-developer').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || developer.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Add search input to the header
+    const header = document.querySelector('.header');
+    const searchHTML = `
+      <div style="margin-top: 1rem;">
+        <input type="text" id="search-input" placeholder="Search games..." style="padding: 0.5rem; width: 60%; max-width: 300px;">
+        <button onclick="searchGames()" style="padding: 0.5rem 1rem; background-color: #3498db; color: white; border: none; cursor: pointer;">Search</button>
+      </div>
+    `;
+    header.insertAdjacentHTML('beforeend', searchHTML);
+  </script>
 </body>
+</html>
